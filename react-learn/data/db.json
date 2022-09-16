@@ -1,0 +1,25 @@
+{
+  "dataJson": [
+    {
+      "text": "mohamed",
+      "counter": 2,
+      "selectC": "Ice Coffee",
+      "isChecked": false,
+      "id": 1233
+    },
+    {
+      "text": "rami",
+      "counter": 1,
+      "selectC": "Espresso",
+      "isChecked": true,
+      "id": 2235
+    },
+    {
+      "text": "amer",
+      "counter": 1,
+      "selectC": "Ice Coffee",
+      "isChecked": true,
+      "id": 12333
+    }
+  ]
+}
