@@ -1,4 +1,4 @@
-import { React, useState, createContext, useCallback } from "react";
+import { React, useState, createContext, useCallback, useEffect } from "react";
 import CardList from "./CardList";
 import HistoryList from "./HistoryList";
 import Form from "./Form";
@@ -14,6 +14,31 @@ export default function Homepage(props) {
   const [ls, setLs] = useState([]); //Main List has all the items
   const [selectC, setSelectC] = useState(""); // state of selected value
   const [isChecked, setIsChecked] = useState(false);
+  let API = "http://localhost:5000/s";
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API);
+        if (!response.ok) {
+          throw Error("did not receive expected data");
+        }
+        const listItems = await response.json();
+        console.log(listItems);
+        // console.log(listItems);
+        setLs(listItems);
+        // setFetchError(null);
+      } catch (err) {
+        // setFetchError(err.message);
+      } finally {
+        // setIsLoding(false);
+      }
+    };
+    setTimeout(() => {
+      fetchItems();
+    }, 1200);
+  }, []);
+
   return (
     <UserContext.Provider value={{ selectC, setSelectC }}>
       <div className="container">
