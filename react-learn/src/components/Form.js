@@ -5,6 +5,7 @@ import InputText from "./InputText";
 import Select from "./Select";
 import styles from "./style.module.css";
 import React, { useCallback } from "react";
+import axios from "axios";
 function Form({
   text,
   setText,
@@ -23,25 +24,56 @@ function Form({
     },
     [text]
   );
-  //handle submit buttion
+
+  // //handle submit buttion
+  // const handleSubmit = useCallback(
+  //   (event) => {
+  //     console.log("Form rendered");
+  //     event.preventDefault(); //Prevent refreshing the page
+  //     changedMethod(event);
+  //     const data = {
+  //       text,
+  //       counter,
+  //       selectC,
+  //       isChecked,
+  //       id: shortid.generate(),
+  //     };
+  //     setLs([...ls, data]);
+  //     setText("");
+  //     // text={current:""}
+  //   },
+  //   [text, counter, selectC, isChecked, ls]
+  // );
+
   const handleSubmit = useCallback(
     (event) => {
-      console.log("Form rendered");
-      event.preventDefault(); //Prevent refreshing the page
-      changedMethod(event);
+      event.preventDefault();
       const data = {
-        text,
-        counter,
-        selectC,
-        isChecked,
+        text: text,
+        counter: counter,
+        selectC: selectC,
+        isChecked: isChecked,
         id: shortid.generate(),
       };
       setLs([...ls, data]);
       setText("");
-      // text={current:""}
+
+      axios({
+        url: "http://localhost:5000",
+        method: "POST",
+        data: data,
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      // console.log("Internal server error"));
     },
     [text, counter, selectC, isChecked, ls]
   );
+
   return (
     <form onSubmit={handleSubmit} method="post" action="http://localhost:3009/">
       <h1>React Counter</h1>

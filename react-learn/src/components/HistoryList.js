@@ -3,7 +3,6 @@ import History from "./History";
 import React from "react";
 export default function historyList({ historyList }) {
   console.log("History List rendered");
-
   return (
     <div>
       <ul className="list-group">

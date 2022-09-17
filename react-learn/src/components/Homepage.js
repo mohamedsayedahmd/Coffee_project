@@ -7,6 +7,7 @@ export const UserContext = createContext(); //new day
 
 export default function Homepage(props) {
   console.log("Home page rendered");
+
   const [counter, setCounter] = useState(0);
   const [text, setText] = useState(""); //get the text from the input
   const [historyList, setHistoryList] = useState([]); //get value and set history

@@ -1,27 +1,35 @@
-import React,{useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { UserContext } from "./Homepage";
 
+function Select() {
+  const user = useContext(UserContext);
 
-function Select(){
-const user = useContext(UserContext);
+  // console.log(user)
+  console.log("Select rendered");
 
-    // console.log(user)
-    console.log("Select rendered")
-
-    const selectHandle = (event)=>{
-        user.setSelectC(event.target.value);
-    }
-    return(
-        <>
-        <select style={{ width:200} }className="form-select" aria-label="Default select example" id="lang" onChange={selectHandle}>
-                  <option value="Select">Select</option>
-                  <option value="Ice Coffee">Ice Coffee</option>
-                  <option value="Hot Chocolate">Hot Chocolate</option>
-                  <option value="Espresso">Espresso</option>
-                  <option value="Black Coffee">Black Coffee</option>
-                  {/* {console.log(selectC)} */}
-        </select>
-        </>
-    )
+  const selectHandle = useCallback(
+    (event) => {
+      user.setSelectC(event.target.value);
+    },
+    [user.selectC]
+  );
+  return (
+    <>
+      <select
+        style={{ width: 200 }}
+        className="form-select"
+        aria-label="Default select example"
+        id="lang"
+        onChange={selectHandle}
+      >
+        <option value="Select">Select</option>
+        <option value="Ice Coffee">Ice Coffee</option>
+        <option value="Hot Chocolate">Hot Chocolate</option>
+        <option value="Espresso">Espresso</option>
+        <option value="Black Coffee">Black Coffee</option>
+        {/* {console.log(selectC)} */}
+      </select>
+    </>
+  );
 }
-export default React.memo(Select)
+export default React.memo(Select);
