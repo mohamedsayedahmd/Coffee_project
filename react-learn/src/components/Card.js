@@ -8,6 +8,7 @@ export default function Card({
   setLs,
   ls,
   text,
+  id,
   counter,
   setHistoryList,
   historyList,
@@ -20,10 +21,10 @@ export default function Card({
     tempList.push(lsItem);
     setHistoryList(tempList);
     setLs(ls.filter((item) => item.id !== lsItem.id));
-    console.log("lsItem._id  : " + lsItem.id);
+    console.log("lsItem._id  : " + id);
     console.log(lsItem);
     axios
-      .delete("http://localhost:5000/s/" + lsItem._id)
+      .delete("http://localhost:5000/s/" + lsItem.id)
       .then(() => console.log("deleted..."));
   }, [historyList, ls]);
   return (

@@ -68,34 +68,18 @@ app.get("/s", (req, res) => {
     });
 });
 
-// app.delete("",(req,res)=>{
-//     Coffee.findByIdAndDelete(req.params.id)
-// })
-
 app.get("/s/:id", (req, res) => {
-  Coffee.findById(req.params.id).then((result) => {
+  Coffee.findById(req.body.id).then((result) => {
     res.send(result);
   });
 });
 
 app.delete("/s/:id", async (req, res) => {
   console.log("hello from DELETE req");
-  // const result = await Coffee.deleteOne({ _id: req.params.id });
-  // console.log(result);
+  console.log(req.params.id);
+  const result = await Coffee.deleteOne({ id: req.params.id });
+  console.log(result);
 });
-
-// app.delete("/s/:id", (req, res) => {
-//   Coffee.findById(req.params.id).then((result) => {
-//     res.send(result);
-//   });
-// });
-
-// app.delete("/s/:id", async (req, res) => {
-//   console.log("hello from DELETE req");
-//   console.log(req.params.id);
-//   const result = await Coffee.deleteOne({ _id: req.params.id });
-//   // console.log(result);
-// });
 
 // const url = "http://127.0.0.1:5000/s";
 // http.get(url, (response) => {
