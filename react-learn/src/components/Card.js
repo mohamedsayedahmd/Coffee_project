@@ -7,41 +7,25 @@ export default function Card({
   lsItem,
   setLs,
   ls,
-  data,
   text,
   counter,
   setHistoryList,
   historyList,
 }) {
   console.log("Card rendered");
-
-  // const deleteCard = useCallback(() => {
-  //   console.log("my ID is ");
-  //   console.log(lsItem.id);
-  //   let tempList = historyList;
-  //   tempList.push(lsItem);
-  //   setHistoryList(tempList);
-  //   setLs(ls.filter((item) => item.id !== lsItem.id));
-  //   // console.log(ls)
-
-  //   axios
-  //     .delete("http://localhost:5000/s/" + lsItem.id)
-  //     .then(() => console.log("deleted..."));
-  // }, [historyList, ls]);
-
-  const deleteCard = () => {
+  const deleteCard = useCallback(() => {
     console.log("my ID is ");
     console.log(lsItem._id);
     let tempList = historyList;
     tempList.push(lsItem);
     setHistoryList(tempList);
     setLs(ls.filter((item) => item.id !== lsItem.id));
-    // console.log(ls)
-
-    axios.delete("http://localhost:5000/s/" + lsItem._id);
-    //   .then(() => console.log("deleted..."));
-  };
-
+    console.log("lsItem._id  : " + lsItem.id);
+    console.log(lsItem);
+    axios
+      .delete("http://localhost:5000/s/" + lsItem._id)
+      .then(() => console.log("deleted..."));
+  }, [historyList, ls]);
   return (
     <div className="card" width={200}>
       <div className="card-body">
@@ -53,11 +37,9 @@ export default function Card({
             </span>
           </span>
         </p>
-
         <p className="card-text">
           <span className={styles.st}>Number of Coffee : {counter}</span>
         </p>
-
         <p className="card-text">
           <span className={styles.st}>Selected Coffee : {selectC}</span>
         </p>
@@ -65,7 +47,6 @@ export default function Card({
         <a href="#" className="btn btn-primary m-1">
           Go somewhere
         </a>
-
         <button onClick={deleteCard} type="button" className="btn btn-danger ">
           Delete
         </button>

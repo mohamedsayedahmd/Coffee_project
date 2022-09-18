@@ -55,11 +55,9 @@ function Form({
   );
 
   return (
-    <form onSubmit={handleSubmit} method="post" action="http://localhost:3009/">
+    <form onSubmit={handleSubmit}>
       <h1>React Counter</h1>
-
       <CountButtons counter={counter} setCounter={setCounter} />
-
       <Select />
 
       <div className="counter_output m-2">
