@@ -1,10 +1,9 @@
 import styles from "./style.module.css";
 import { React, useCallback } from "react";
+import axios from "axios";
 export default function Card({
   isChecked,
   selectC,
-  id,
-  idx,
   lsItem,
   setLs,
   ls,
@@ -15,13 +14,33 @@ export default function Card({
   historyList,
 }) {
   console.log("Card rendered");
-  const deleteCard = useCallback(() => {
+
+  // const deleteCard = useCallback(() => {
+  //   console.log("my ID is ");
+  //   console.log(lsItem.id);
+  //   let tempList = historyList;
+  //   tempList.push(lsItem);
+  //   setHistoryList(tempList);
+  //   setLs(ls.filter((item) => item.id !== lsItem.id));
+  //   // console.log(ls)
+
+  //   axios
+  //     .delete("http://localhost:5000/s/" + lsItem.id)
+  //     .then(() => console.log("deleted..."));
+  // }, [historyList, ls]);
+
+  const deleteCard = () => {
+    console.log("my ID is ");
+    console.log(lsItem._id);
     let tempList = historyList;
     tempList.push(lsItem);
     setHistoryList(tempList);
     setLs(ls.filter((item) => item.id !== lsItem.id));
     // console.log(ls)
-  }, [historyList, ls]);
+
+    axios.delete("http://localhost:5000/s/" + lsItem._id);
+    //   .then(() => console.log("deleted..."));
+  };
 
   return (
     <div className="card" width={200}>

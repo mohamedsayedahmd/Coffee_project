@@ -68,6 +68,28 @@ app.get("/s", (req, res) => {
     });
 });
 
+// app.delete("",(req,res)=>{
+//     Coffee.findByIdAndDelete(req.params.id)
+// })
+
+app.get("/s/:id", (req, res) => {
+  Coffee.findById(req.params.id).then((result) => {
+    res.send(result);
+  });
+});
+// app.delete("/s/:id", (req, res) => {
+//     Coffee.findById(req.params.id).then((result) => {
+//       res.send(result);
+//     });
+//   });
+
+app.delete("/s/:id", async (req, res) => {
+  console.log("done");
+  // const data = await dbConnect();
+  const result = await Coffee.deleteOne({ _id: req.params.id });
+  console.log(result);
+});
+
 const http = require("http");
 
 // const url = "http://127.0.0.1:5000/s";

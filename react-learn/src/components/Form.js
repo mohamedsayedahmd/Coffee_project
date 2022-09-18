@@ -25,29 +25,9 @@ function Form({
     [text]
   );
 
-  // //handle submit buttion
-  // const handleSubmit = useCallback(
-  //   (event) => {
-  //     console.log("Form rendered");
-  //     event.preventDefault(); //Prevent refreshing the page
-  //     changedMethod(event);
-  //     const data = {
-  //       text,
-  //       counter,
-  //       selectC,
-  //       isChecked,
-  //       id: shortid.generate(),
-  //     };
-  //     setLs([...ls, data]);
-  //     setText("");
-  //     // text={current:""}
-  //   },
-  //   [text, counter, selectC, isChecked, ls]
-  // );
-
   const handleSubmit = useCallback(
     (event) => {
-      event.preventDefault();
+      event.preventDefault(); //Prevent refreshing the page
       const data = {
         text: text,
         counter: counter,
