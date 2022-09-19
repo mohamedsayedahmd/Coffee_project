@@ -2,7 +2,6 @@ import { React, useState, createContext, useCallback, useEffect } from "react";
 import CardList from "./CardList";
 import HistoryList from "./HistoryList";
 import Form from "./Form";
-import styles from "./style.module.css";
 export const UserContext = createContext(); //new day
 
 export default function Homepage(props) {

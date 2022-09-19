@@ -18,13 +18,6 @@ function Form({
   selectC,
 }) {
   console.log("Form rendered");
-  const changedMethod = useCallback(
-    (event) => {
-      setText(event.target.value);
-    },
-    [text]
-  );
-
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault(); //Prevent refreshing the page
@@ -49,7 +42,6 @@ function Form({
         .catch(function (error) {
           console.log(error);
         });
-      // console.log("Internal server error"));
     },
     [text, counter, selectC, isChecked, ls]
   );

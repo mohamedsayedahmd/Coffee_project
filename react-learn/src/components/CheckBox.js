@@ -10,7 +10,6 @@ function CheckBox({ isChecked, setIsChecked }) {
   return (
     <>
       <div className={styles.sc}>
-        {/* <div className="input-group-text"> */}
         <div className="input-group-text">
           <input
             checked={isChecked}

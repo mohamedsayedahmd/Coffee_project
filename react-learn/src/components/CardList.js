@@ -1,22 +1,17 @@
-import Card from "./Card";
 import React from "react";
-function CardList({ ls, setLs, historyList, setHistoryList, isChecked }) {
+import Card from "./Card";
+function CardList({ ls, setLs, historyList, setHistoryList }) {
   console.log("Card List rendered");
   return (
     <>
       {ls.map((lsItem) => (
         <Card
-          selectC={lsItem.selectC}
           key={lsItem.id}
-          id={lsItem.id}
           lsItem={lsItem}
-          setLs={setLs}
           ls={ls}
-          text={lsItem.text}
-          counter={lsItem.counter}
-          setHistoryList={setHistoryList}
+          setLs={setLs}
           historyList={historyList}
-          isChecked={lsItem.isChecked}
+          setHistoryList={setHistoryList}
         ></Card>
       ))}
     </>
