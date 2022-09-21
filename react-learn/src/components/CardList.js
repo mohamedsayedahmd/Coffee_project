@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "./Card";
-import { useCallback } from "react";
 function CardList({ ls, setLs, historyList, setHistoryList }) {
   console.log("Card List rendered");
   return (

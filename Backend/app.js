@@ -3,7 +3,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
-app.listen(5000, (req, res) => {
+// Start the server on PORT 5000
+PORT = 5000;
+app.listen(PORT || process.env.PORT, (req, res) => {
   console.log("server is running");
 });
 // Connect to database
@@ -12,13 +14,18 @@ const db = require("./config/database");
 const Coffee = require("./Models/coffeeSchema");
 // http://localhost:5000/user
 app.use("/user", require("./routes/user"));
+// Set staic folder
 app.use(express.static("public"));
+// Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+// Core
 app.use(cors({ allowedOrigins: ["http://localhost:3000"] }));
+// GET
 app.get("/", (req, res) => {
   res.json({ msg: "get / " });
 });
+// POST
 app.post("/", (req, res) => {
   const coffee = new Coffee({
     text: req.body.text,
@@ -27,6 +34,9 @@ app.post("/", (req, res) => {
     isChecked: req.body.isChecked,
     id: req.body.id,
   });
-  coffee.save();
-  console.log(req.body.text);
+  coffee.save(); // Add new coffee order
+});
+//404
+app.use((req, res) => {
+  res.status(404).send("sorry can't find that!");
 });

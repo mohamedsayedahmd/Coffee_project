@@ -1,7 +1,6 @@
 import shortid from "shortid";
 import History from "./History";
 import React from "react";
-
 export default function historyList({ historyList, setHistoryList }) {
   // console.log("History List rendered");
   return (

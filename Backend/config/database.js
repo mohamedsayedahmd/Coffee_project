@@ -4,9 +4,7 @@ mongoose
     "mongodb+srv://mohamedssed:m24776593m@cluster0.i5ujxrr.mongodb.net/all-data?retryWrites=true&w=majority"
   )
   .then((result) => {
-    // console.log(result);
-    console.log("entered");
-    console.log("server is ruuning on 5000...");
+    console.log("Connected To Database...");
   })
   .catch((err) => {
     console.log(err);

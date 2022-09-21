@@ -66,4 +66,3 @@ export default function Form({
     </form>
   );
 }
-// export default React.memo(Form);
