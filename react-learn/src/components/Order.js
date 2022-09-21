@@ -5,8 +5,8 @@ import HistoryList from "./HistoryList";
 import Form from "./Form";
 export const UserContext = createContext(); //new day
 
-function Homepage(props) {
-  console.log("Home page rendered");
+function Homepage() {
+  console.log("Order rendered");
 
   const [counter, setCounter] = useState(0);
   const [text, setText] = useState(""); //get the text from the input
