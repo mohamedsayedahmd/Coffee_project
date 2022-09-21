@@ -7,12 +7,9 @@ function Select() {
   // console.log(user)
   console.log("Select rendered");
 
-  const selectHandle = useCallback(
-    (event) => {
-      user.setSelectC(event.target.value);
-    },
-    [user.selectC]
-  );
+  const selectHandle = (event) => {
+    user.setSelectC(event.target.value);
+  };
   return (
     <>
       <select

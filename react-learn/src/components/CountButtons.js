@@ -4,24 +4,21 @@ function CountButtons({ count, setCounter }) {
 
   //Add button functions:
 
-  const ss = useCallback(
-    (expression) => {
-      switch (expression) {
-        case 0:
-          setCounter((count) => count + 1);
-          break;
-        case 1:
-          setCounter((count) => count - 1);
-          break;
-        case 2:
-          setCounter((count) => count * 0);
-          break;
-        default:
-        // code block
-      }
-    },
-    [count]
-  );
+  const ss = (expression) => {
+    switch (expression) {
+      case 0:
+        setCounter((count) => count + 1);
+        break;
+      case 1:
+        setCounter((count) => count - 1);
+        break;
+      case 2:
+        setCounter((count) => count * 0);
+        break;
+      default:
+      // code block
+    }
+  };
   return (
     <>
       {/* increase , Decrease ,Zero buttons  */}

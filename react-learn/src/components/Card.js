@@ -4,7 +4,7 @@ import styles from "./style.module.css";
 import axios from "axios";
 function Card({ lsItem, setLs, ls, id, setHistoryList, historyList }) {
   console.log("Card rendered");
-  const deleteCard = useCallback(() => {
+  const deleteCard = () => {
     console.log("my ID is ");
     console.log(lsItem._id);
     let tempList = historyList;
@@ -16,7 +16,7 @@ function Card({ lsItem, setLs, ls, id, setHistoryList, historyList }) {
     axios
       .delete("http://localhost:5000/user/" + lsItem.id)
       .then(() => console.log("deleted..."));
-  }, [historyList, setHistoryList, ls]);
+  };
   return (
     <div className="card" width={200}>
       <div className="card-body">

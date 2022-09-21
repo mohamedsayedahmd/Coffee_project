@@ -1,12 +1,9 @@
 import React, { useCallback } from "react";
 function InputText({ text, setText }) {
   console.log("InputText rendered");
-  const changedMethod = useCallback(
-    (event) => {
-      setText(event.target.value);
-    },
-    [text]
-  );
+  const changedMethod = (event) => {
+    setText(event.target.value);
+  };
   return (
     <div>
       <input

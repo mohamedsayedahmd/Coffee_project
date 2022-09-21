@@ -18,33 +18,30 @@ export default function Form({
   selectC,
 }) {
   console.log("Form rendered");
-  const handleSubmit = useCallback(
-    (event) => {
-      event.preventDefault(); //Prevent refreshing the page
-      const data = {
-        text: text,
-        counter: counter,
-        selectC: selectC,
-        isChecked: isChecked,
-        id: shortid.generate(),
-      };
-      setLs([...ls, data]);
-      setText("");
+  const handleSubmit = (event) => {
+    event.preventDefault(); //Prevent refreshing the page
+    const data = {
+      text: text,
+      counter: counter,
+      selectC: selectC,
+      isChecked: isChecked,
+      id: shortid.generate(),
+    };
+    setLs([...ls, data]);
+    setText("");
 
-      axios({
-        url: "http://localhost:5000",
-        method: "POST",
-        data: data,
+    axios({
+      url: "http://localhost:5000",
+      method: "POST",
+      data: data,
+    })
+      .then((res) => {
+        console.log(res);
       })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    [text, counter, selectC, isChecked, ls]
-  );
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   return (
     <form onSubmit={handleSubmit}>

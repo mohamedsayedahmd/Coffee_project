@@ -3,9 +3,9 @@ import styles from "./style.module.css";
 function CheckBox({ isChecked, setIsChecked }) {
   console.log("CheckBox rendered");
 
-  const handleOnChange = useCallback(() => {
+  const handleOnChange = () => {
     setIsChecked(!isChecked);
-  }, [isChecked, setIsChecked]);
+  };
 
   return (
     <>
