@@ -1,5 +1,5 @@
 import React from "react";
-function History({ m }) {
+export default function History({ m }) {
   console.log("History rendered");
   return (
     <>
@@ -8,4 +8,4 @@ function History({ m }) {
     </>
   );
 }
-export default React.memo(History);
+// export default React.memo(History);

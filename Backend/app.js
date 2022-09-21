@@ -2,39 +2,22 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const mongoose = require("mongoose");
+app.listen(5000, (req, res) => {
+  console.log("server is running");
+});
+// Connect to database
+const db = require("./config/database");
+// Get the Coffees Orders
+const Coffee = require("./Models/coffeeSchema");
+// http://localhost:5000/user
+app.use("/user", require("./routes/user"));
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(
-  cors({
-    allowedOrigins: ["http://localhost:3000"],
-  })
-);
-const mongoose = require("mongoose");
-mongoose
-  .connect(
-    "mongodb+srv://mohamedssed:m24776593m@cluster0.i5ujxrr.mongodb.net/all-data?retryWrites=true&w=majority"
-  )
-  .then((result) => {
-    console.log("entered");
-    app.listen(process.env.PORT || 5000, (req, res) => {
-      console.log("server is ruuning on 5000...");
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-const CoffeeSchema = new mongoose.Schema({
-  text: String,
-  counter: Number,
-  selectC: String,
-  isChecked: Boolean,
-  id: String,
-});
-const Coffee = mongoose.model("CoffeeDatabase", CoffeeSchema);
-
+app.use(cors({ allowedOrigins: ["http://localhost:3000"] }));
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.json({ msg: "get / " });
 });
 app.post("/", (req, res) => {
   const coffee = new Coffee({
@@ -47,63 +30,3 @@ app.post("/", (req, res) => {
   coffee.save();
   console.log(req.body.text);
 });
-app.get("/save", (req, res) => {
-  const data1 = {
-    text: "mohamed",
-    counter: 5,
-    selectC: "Ice Coffee",
-    isChecked: false,
-    id: 212,
-  };
-  res.json(data1);
-});
-app.get("/s", (req, res) => {
-  Coffee.find()
-    .then((result) => {
-      //   console.log(result);
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-app.get("/s/:id", (req, res) => {
-  Coffee.findById(req.body.id).then((result) => {
-    res.send(result);
-  });
-});
-
-app.delete("/s/:id", async (req, res) => {
-  console.log("hello from DELETE req");
-  console.log(req.params.id);
-  const result = await Coffee.deleteOne({ id: req.params.id });
-  console.log(result);
-});
-
-// const url = "http://127.0.0.1:5000/s";
-// http.get(url, (response) => {
-//   console.log(res.response);
-
-//   response.on("data", (data) => {
-//     // console.log(data);
-//     const coffeeData = JSON.parse(data); //HEX
-//     console.log(coffeeData);
-//     // const object = {
-//     //     name: "mohamed",
-//     //     food: "coffee"
-//     // }
-//     // console.log(JSON.stringify(object));
-
-//     // const temp = weatherData.main.temp
-//     // console.log(temp)
-//     // const dis = weatherData.weather[0].description;
-//     // // console.log(dis)
-//     // const icon = weatherData.weather[0].icon;
-//     // var uu = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
-//     // res.write("<p>The weather is currently " + dis + "</p>")
-//     // res.write("<h1>The temperature in London is " + temp + " degress Celcius.</h1>")
-//     // res.write("<img src=" + uu + ">")
-//     // res.send()
-//   });
-// });

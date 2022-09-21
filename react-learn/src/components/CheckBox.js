@@ -5,7 +5,7 @@ function CheckBox({ isChecked, setIsChecked }) {
 
   const handleOnChange = useCallback(() => {
     setIsChecked(!isChecked);
-  }, [isChecked]);
+  }, [isChecked, setIsChecked]);
 
   return (
     <>

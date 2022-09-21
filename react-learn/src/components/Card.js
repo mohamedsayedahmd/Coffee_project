@@ -14,9 +14,9 @@ function Card({ lsItem, setLs, ls, id, setHistoryList, historyList }) {
     console.log("lsItem._id  : " + id);
     console.log(lsItem);
     axios
-      .delete("http://localhost:5000/s/" + lsItem.id)
+      .delete("http://localhost:5000/user/" + lsItem.id)
       .then(() => console.log("deleted..."));
-  }, [historyList, ls]);
+  }, [historyList, setHistoryList, ls]);
   return (
     <div className="card" width={200}>
       <div className="card-body">

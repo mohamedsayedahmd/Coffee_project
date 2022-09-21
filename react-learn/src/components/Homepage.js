@@ -1,10 +1,11 @@
-import { React, useState, createContext, useCallback, useEffect } from "react";
+import React from "react";
+import { useState, createContext, useCallback, useEffect } from "react";
 import CardList from "./CardList";
 import HistoryList from "./HistoryList";
 import Form from "./Form";
 export const UserContext = createContext(); //new day
 
-export default function Homepage(props) {
+function Homepage(props) {
   console.log("Home page rendered");
 
   const [counter, setCounter] = useState(0);
@@ -13,7 +14,7 @@ export default function Homepage(props) {
   const [ls, setLs] = useState([]); //Main List has all the items
   const [selectC, setSelectC] = useState(""); // state of selected value
   const [isChecked, setIsChecked] = useState(false);
-  let API = "http://localhost:5000/s";
+  let API = "http://localhost:5000/user";
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -61,9 +62,13 @@ export default function Homepage(props) {
             historyList={historyList}
             setHistoryList={setHistoryList}
           />
-          <HistoryList historyList={historyList} />
+          <HistoryList
+            historyList={historyList}
+            setHistoryList={setHistoryList}
+          />
         </center>
       </div>
     </UserContext.Provider>
   );
 }
+export default React.memo(Homepage);

@@ -6,7 +6,7 @@ import Select from "./Select";
 import styles from "./style.module.css";
 import React, { useCallback } from "react";
 import axios from "axios";
-function Form({
+export default function Form({
   text,
   setText,
   setIsChecked,
@@ -66,4 +66,4 @@ function Form({
     </form>
   );
 }
-export default React.memo(Form);
+// export default React.memo(Form);
