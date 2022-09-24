@@ -17,7 +17,7 @@ export default function Form({
   selectC,
 }) {
   console.log("Form rendered");
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); //Prevent refreshing the page
     const data = {
       text: text,
@@ -29,7 +29,7 @@ export default function Form({
     setLs([...ls, data]);
     setText("");
 
-    axios({
+    await axios({
       url: "http://localhost:5000",
       method: "POST",
       data: data,
