@@ -13,9 +13,13 @@ router.get("/", async (req, res) => {
 });
 // Get Singel Member
 router.get("/:id", async (req, res) => {
-  await Coffee.findById(req.params.id).then((result) => {
-    res.send(result);
-  });
+  await Coffee.findById(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 // Delete Singel Member
 router.delete("/:id", async (req, res) => {
@@ -24,4 +28,5 @@ router.delete("/:id", async (req, res) => {
   const result = await Coffee.deleteOne({ id: req.params.id });
   console.log(result);
 });
+
 module.exports = router;

@@ -4,18 +4,22 @@ import styles from "./style.module.css";
 import axios from "axios";
 function Card({ lsItem, setLs, ls, id, setHistoryList, historyList }) {
   console.log("Card rendered");
-  const deleteCard = () => {
-    console.log("my ID is ");
-    console.log(lsItem._id);
-    let tempList = historyList;
-    tempList.push(lsItem);
-    setHistoryList(tempList);
-    setLs(ls.filter((item) => item.id !== lsItem.id));
-    console.log("lsItem._id  : " + id);
-    console.log(lsItem);
-    axios
-      .delete("http://localhost:5000/user/" + lsItem.id)
-      .then(() => console.log("deleted..."));
+  const deleteCard = async () => {
+    try {
+      console.log("my ID is ");
+      console.log(lsItem._id);
+      let tempList = historyList;
+      tempList.push(lsItem);
+      setHistoryList(tempList);
+      setLs(ls.filter((item) => item.id !== lsItem.id));
+      console.log("lsItem._id  : " + id);
+      console.log(lsItem);
+      await axios
+        .delete("http://localhost:5000/user/" + lsItem.id)
+        .then(() => console.log("deleted..."));
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="card" width={200}>

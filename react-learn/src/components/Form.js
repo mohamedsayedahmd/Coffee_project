@@ -4,7 +4,6 @@ import CountButtons from "./CountButtons";
 import InputText from "./InputText";
 import Select from "./Select";
 import styles from "./style.module.css";
-import React, { useCallback } from "react";
 import axios from "axios";
 export default function Form({
   text,
@@ -38,7 +37,7 @@ export default function Form({
       .then((res) => {
         console.log(res);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   };
