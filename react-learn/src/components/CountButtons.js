@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-function CountButtons({ count, setCounter }) {
+import React from "react";
+function CountButtons({ setCounter }) {
   console.log("CountButtons rendered");
 
   //Add button functions:

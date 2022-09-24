@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Order from "./components/Order";
+import ErrorNotFound from "./components/ErrorNotFound";
 function App() {
   return (
     <Router>
@@ -17,9 +18,10 @@ function App() {
         <NavBar />
 
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/order" element={<Order />} />
-          <Route exact path="/about" element={<AboutUs />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="*" element={<ErrorNotFound />} />
         </Routes>
       </div>
     </Router>

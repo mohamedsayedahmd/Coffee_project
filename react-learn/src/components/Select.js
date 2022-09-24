@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "./Order";
 
 function Select() {
@@ -24,7 +24,6 @@ function Select() {
         <option value="Hot Chocolate">Hot Chocolate</option>
         <option value="Espresso">Espresso</option>
         <option value="Black Coffee">Black Coffee</option>
-        {/* {console.log(selectC)} */}
       </select>
     </>
   );

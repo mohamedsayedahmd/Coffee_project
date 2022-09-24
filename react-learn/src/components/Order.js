@@ -24,12 +24,16 @@ function Homepage() {
           throw Error("did not receive expected data");
         }
         const listItems = await response.json();
-        console.log(listItems);
+        // console.log(
+        //   "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" +
+        //     listItems +
+        //     "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+        // );
         // console.log(listItems);
         setLs(listItems);
         // setFetchError(null);
       } catch (err) {
-        // setFetchError(err.message);
+        console.log(err);
       } finally {
         // setIsLoding(false);
       }
@@ -62,10 +66,7 @@ function Homepage() {
             historyList={historyList}
             setHistoryList={setHistoryList}
           />
-          <HistoryList
-            historyList={historyList}
-            setHistoryList={setHistoryList}
-          />
+          <HistoryList historyList={historyList} />
         </center>
       </div>
     </UserContext.Provider>
