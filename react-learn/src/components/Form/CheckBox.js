@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import styles from "./../style.module.css";
 function CheckBox({ isChecked, setIsChecked }) {
   console.log("CheckBox rendered");

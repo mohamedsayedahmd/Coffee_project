@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 function InputText({ text, setText }) {
   console.log("InputText rendered");
   const changedMethod = (event) => {
