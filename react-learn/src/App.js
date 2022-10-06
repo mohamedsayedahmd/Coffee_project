@@ -1,19 +1,15 @@
-import AboutUs from "./components/AboutUs";
-import Header from "./components/Header";
+import AboutUs from "./components/Pages/AboutUs";
+import Header from "./components/NavBar/Header";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import Home from "./components/Home";
-import Order from "./components/Order";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./components/Pages/Home";
+import Order from "./components/Pages/Order";
 import ErrorNotFound from "./components/ErrorNotFound";
+import { background_url } from "./images/types";
 function App() {
   return (
     <Router>
-      <div
-        className="container"
-        style={{
-          backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/006/761/234/large_2x/gray-soft-backdrop-light-grey-background-free-photo.jpg")`,
-        }}
-      >
+      <div className="container" style={{ backgroundImage: background_url }}>
         <Header className="container" />
         <NavBar />
 

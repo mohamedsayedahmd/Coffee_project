@@ -1,4 +1,4 @@
-import styles from "./style.module.css";
+import styles from "./../style.module.css";
 export default function AboutUs() {
   console.log("about us rendered");
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);

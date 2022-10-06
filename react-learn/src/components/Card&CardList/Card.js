@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./style.module.css";
+import styles from "./../style.module.css";
 import axios from "axios";
 function Card({ lsItem, setLs, ls, setHistoryList, historyList }) {
   console.log("Card rendered");

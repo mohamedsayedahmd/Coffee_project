@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, createContext, useCallback, useEffect } from "react";
-import CardList from "./CardList";
-import HistoryList from "./HistoryList";
-import Form from "./Form";
+import CardList from "../Card&CardList/CardList";
+import HistoryList from "./../History&HistoryList/HistoryList";
+import Form from "./../Form/Form";
 export const UserContext = createContext(); //new day
 
 function Homepage() {

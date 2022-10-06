@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./style.module.css";
-
+import styles from "./../style.module.css";
+import { home_coffee, coffee_border } from "./../../images/types";
 function Home() {
   return (
     <div className="container">
@@ -11,15 +11,11 @@ function Home() {
           className="img-fluid"
           height={80}
           width={80}
-          src="https://cdn-icons-png.flaticon.com/512/590/590749.png"
+          src={home_coffee}
           alt="MDN logo"
         />
       </span>
-      <img
-        className="img-fluid"
-        src="https://coffeeaffection.com/wp-content/uploads/2020/07/divider-2-e1596661368562.webp"
-        alt="MDN logo"
-      />
+      <img className="img-fluid" src={coffee_border} alt="MDN logo" />
       <div className={styles.list}>
         <ul>
           <li>Coffee is a kind of magic you can drink.</li>
@@ -31,11 +27,7 @@ function Home() {
           <li>What goes best with a cup of coffee? Another cup.</li>
         </ul>
       </div>
-      <img
-        className="img-fluid"
-        src="https://coffeeaffection.com/wp-content/uploads/2020/07/divider-2-e1596661368562.webp"
-        alt="MDN logo"
-      />
+      <img className="img-fluid" src={coffee_border} alt="MDN logo" />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import shortid from "shortid";
 import CheckBox from "./CheckBox";
 import CountButtons from "./CountButtons";
-import InputText from "./InputText";
-import Select from "./Select";
-import styles from "./style.module.css";
+import InputText from "./../Form/InputText";
+import Select from "./../Form/Select";
+import styles from "./../style.module.css";
 import axios from "axios";
 export default function Form({
   text,
