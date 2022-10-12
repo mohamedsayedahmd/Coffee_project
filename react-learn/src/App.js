@@ -6,20 +6,41 @@ import Home from "./components/Pages/Home";
 import Order from "./components/Pages/Order";
 import ErrorNotFound from "./components/ErrorNotFound";
 import { background_url } from "./images/types";
+import Favorite from "./components/Pages/Favorite";
+import { FavContext } from "./components/FavContext";
+import Login from "./components/Pages/Login";
+import Register from "./components/Pages/Register";
+import React, { Fragment, useState } from "react";
 function App() {
+  console.log("app rendered");
+
+  const [value, setValue] = useState([]);
   return (
     <Router>
-      <div className="container" style={{ backgroundImage: background_url }}>
-        <Header className="container" />
-        <NavBar />
+      <Fragment>
+        <FavContext.Provider value={{ value, setValue }}>
+          <div
+            className="container"
+            style={{ backgroundImage: background_url }}
+          >
+            <Header className="container" />
+            <NavBar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="*" element={<ErrorNotFound />} />
-        </Routes>
-      </div>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+
+              <Route path="/" element={<Home />} />
+
+              <Route path="/favorite" element={<Favorite />} />
+              <Route path="/order" element={<Order />} />
+
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="*" element={<ErrorNotFound />} />
+            </Routes>
+          </div>
+        </FavContext.Provider>
+      </Fragment>
     </Router>
   );
 }

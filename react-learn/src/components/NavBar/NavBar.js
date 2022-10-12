@@ -12,6 +12,9 @@ function NavBar() {
           <Link className="navbar-brand" to="/order">
             Order Now
           </Link>
+          <Link className="navbar-brand" to="/favorite">
+            favorite
+          </Link>
           <Link className="navbar-brand" to="/about">
             about us
           </Link>

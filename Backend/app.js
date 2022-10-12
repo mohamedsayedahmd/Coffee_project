@@ -12,8 +12,14 @@ app.listen(PORT || process.env.PORT, (req, res) => {
 const db = require("./config/database");
 // Get the Coffees Orders
 const Coffee = require("./Models/coffeeSchema");
+const Favorite = require("./Models/favoriteSchema");
+
 // http://localhost:5000/user
 app.use("/user", require("./routes/user"));
+app.use("/favorite", require("./routes/favorite"));
+app.use("/login", require("./routes/login"));
+app.use("/register", require("./routes/register"));
+
 // Set staic folder
 app.use(express.static("public"));
 // Body Parser

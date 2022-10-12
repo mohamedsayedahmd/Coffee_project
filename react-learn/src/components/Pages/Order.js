@@ -1,11 +1,15 @@
 import React from "react";
-import { useState, createContext, useCallback, useEffect } from "react";
+import { useState, useContext, createContext, useEffect } from "react";
 import CardList from "../Card&CardList/CardList";
 import HistoryList from "./../History&HistoryList/HistoryList";
 import Form from "./../Form/Form";
+import { FavContext } from "../FavContext";
 export const UserContext = createContext(); //new day
 
 function Homepage() {
+  //new
+  // const { value, setValue } = useContext(FavContext);
+  //end new
   console.log("Order rendered");
 
   const [counter, setCounter] = useState(0);
@@ -14,6 +18,7 @@ function Homepage() {
   const [ls, setLs] = useState([]); //Main List has all the items
   const [selectC, setSelectC] = useState(""); // state of selected value
   const [isChecked, setIsChecked] = useState(false);
+  const [favList, setFavList] = useState([]);
   let API = "http://localhost:5000/user";
 
   useEffect(() => {
@@ -24,12 +29,6 @@ function Homepage() {
           throw Error("did not receive expected data");
         }
         const listItems = await response.json();
-        // console.log(
-        //   "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" +
-        //     listItems +
-        //     "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
-        // );
-        // console.log(listItems);
         setLs(listItems);
         // setFetchError(null);
       } catch (err) {
@@ -69,6 +68,7 @@ function Homepage() {
           <HistoryList historyList={historyList} />
         </center>
       </div>
+      {/* <h1>{value}</h1> */}
     </UserContext.Provider>
   );
 }

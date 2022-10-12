@@ -1,20 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./../style.module.css";
 import axios from "axios";
-function Card({ lsItem, setLs, ls, setHistoryList, historyList }) {
+import { FavContext } from "../FavContext";
+function Card({ lsItem, setLs, ls, setHistoryList, historyList, query }) {
   console.log("Card rendered");
+  const { value, setValue } = useContext(FavContext);
+
+  const onFavorite = (fID) => {
+    if (value.includes(fID)) {
+      console.log("ohhh noooo");
+    } else {
+      let temp = [];
+      temp = value;
+      console.log(temp);
+      temp.push(fID);
+      setValue(temp);
+      console.log(fID);
+    }
+  };
+
+  const sendPostRequest = async () => {
+    try {
+      let newPost = {
+        text: lsItem.text,
+        counter: lsItem.counter,
+        selectC: lsItem.selectC,
+        isChecked: lsItem.isChecked,
+        id: lsItem.id,
+      };
+      const resp = await axios.post("http://localhost:5000/favorite", newPost);
+      console.log(resp.data);
+    } catch (err) {
+      // Handle Error Here
+      console.error(err);
+    }
+  };
+
   const deleteCard = async () => {
     try {
-      // console.log("my ID is ");
-      // console.log(lsItem._id);
       let tempList = historyList;
-      tempList.push(lsItem);
-      setHistoryList(tempList);
-      setLs(ls.filter((item) => item.id !== lsItem.id));
+      if (query === "favorite") {
+        
+        setValue(value.filter((item) => item.id !== lsItem.id));
+        // console.log("my ID is ");
+      } else if (query === "user") {
+        tempList.push(lsItem);
+        setHistoryList(tempList);
+        setLs(ls.filter((item) => item.id !== lsItem.id));
+      } else {
+        console.log("error");
+      }
+
       // console.log("lsItem._id  : " + id);
       // console.log(lsItem);
+
       await axios
-        .delete("http://localhost:5000/user/" + lsItem.id)
+        .delete(`http://localhost:5000/${query}/${lsItem.id}`)
         .then(() => console.log("deleted..."));
     } catch (err) {
       console.log(err);
@@ -45,9 +86,21 @@ function Card({ lsItem, setLs, ls, setHistoryList, historyList }) {
         <a href="#" className="btn btn-primary m-1">
           Go somewhere
         </a>
+
         <button onClick={deleteCard} type="button" className="btn btn-danger ">
           Delete
         </button>
+
+        <div>
+          {query !== "favorite" ? (
+            <button
+              onClick={() => sendPostRequest()}
+              className="btn btn-success "
+            >
+              Add to Favorite
+            </button>
+          ) : null}
+        </div>
       </div>
     </div>
   );

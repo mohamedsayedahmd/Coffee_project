@@ -12,6 +12,7 @@ function CardList({ ls, setLs, historyList, setHistoryList }) {
           setLs={setLs}
           historyList={historyList}
           setHistoryList={setHistoryList}
+          query="user"
         ></Card>
       ))}
     </>

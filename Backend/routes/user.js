@@ -28,5 +28,4 @@ router.delete("/:id", async (req, res) => {
   const result = await Coffee.deleteOne({ id: req.params.id });
   console.log(result);
 });
-
 module.exports = router;
