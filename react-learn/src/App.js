@@ -1,6 +1,11 @@
 import AboutUs from "./components/Pages/AboutUs";
 import Header from "./components/NavBar/Header";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Pages/Home";
 import Order from "./components/Pages/Order";
@@ -15,6 +20,7 @@ function App() {
   console.log("app rendered");
 
   const [value, setValue] = useState([]);
+  const [isOkey, setIsOkey] = useState(false);
   return (
     <Router>
       <Fragment>
@@ -36,6 +42,17 @@ function App() {
               <Route path="/order" element={<Order />} />
 
               <Route path="/about" element={<AboutUs />} />
+              <Route path="/redirect" element={<Navigate to="/home" />} />
+              <Route
+                path="/checkout"
+                element={
+                  isOkey ? (
+                    <Navigate to="/login" />
+                  ) : (
+                    <Navigate to="/register" />
+                  )
+                }
+              />
               <Route path="*" element={<ErrorNotFound />} />
             </Routes>
           </div>
