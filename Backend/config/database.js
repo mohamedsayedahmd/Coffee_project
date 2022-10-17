@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 mongoose
-  .connect(
-    "mongodb+srv://mohamedssed:m24776593m@cluster0.i5ujxrr.mongodb.net/all-data?retryWrites=true&w=majority"
-  )
+  .connect(`${process.env.MONGO_LINK}`)
   .then((result) => {
     console.log("Connected To Database...");
   })
