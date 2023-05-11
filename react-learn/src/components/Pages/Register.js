@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Form } from 'antd';
 
 const Register = () => {
   const [pass, setPass] = useState("");
